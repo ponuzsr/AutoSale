@@ -54,7 +54,7 @@ namespace AutoSale
 
             Console.WriteLine("Kérem az autó évjáratát: ");
             ev = int.Parse( Console.ReadLine());
-            string sql = "INSERT INTO `cars`(`Brand`, `Type`, `License`, `Date`) VALUES ('[value-2]','[value-3]','[value-4]','[value-5]')";
+            string sql = $"INSERT INTO `cars`(`Brand`, `Type`, `License`, `Date`) VALUES ('{marka}','{tipus}','{azon}',' {ev}')";
             conn.Connection.Open();
 
             MySqlCommand cmd = new MySqlCommand(sql,conn.Connection);
