@@ -21,20 +21,34 @@ namespace AutoSale
             MySqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
 
-            Car car = new Car();
+            do
+            {
+                Car car = new Car();
 
-            car.Id = dr.GetInt32(0);
-            car.Brand = dr.GetString(1);
-            car.Type = dr.GetString(2);
-            car.License = dr.GetString(3);
-            car.Date = dr.GetInt32(4);
+                car.Id = dr.GetInt32(0);
+                car.Brand = dr.GetString(1);
+                car.Type = dr.GetString(2);
+                car.License = dr.GetString(3);
+                car.Date = dr.GetInt32(4);
 
+                cars.Add(car);
+            } while (dr.Read());
+
+            
 
             conn.Connection.Close();
         }
         static void Main(string[] args)
         {
+            feladat1();
+            foreach (var item in cars)
+            {
+                Console.WriteLine($"Márka: {item.Brand}, Azonosító: {item.License}");
+            }
 
+            Console.ReadLine();
         }
+
+        
     }
 }
