@@ -63,16 +63,36 @@ namespace AutoSale
             conn.Connection.Close();
         }
 
+        public static void feladat3()
+        {
+            int id, ev;
+            Console.WriteLine("Kérem az autó id-ját: ");
+            id = int.Parse( Console.ReadLine());
+
+            Console.WriteLine("Kérem az autó évjáratát: ");
+            ev = int.Parse(Console.ReadLine());
+
+            string sql = $"UPDATE `cars` SET`Date`='{ev}' WHERE `Id` = {id}";
+
+            conn.Connection.Open();
+            MySqlCommand cmd = new MySqlCommand( sql,conn.Connection);
+            cmd.ExecuteNonQuery();
+            conn.Connection.Close();
+        }
+
         static void Main(string[] args)
         {
-            feladat1();
+            /*feladat1();
             foreach (var item in cars)
             {
                 Console.WriteLine($"Márka: {item.Brand}, Azonosító: {item.License}");
             }
 
 
-            feladat2 ();
+            feladat2 ();*/
+
+            feladat3();
+
             Console.ReadLine();
         }
 
